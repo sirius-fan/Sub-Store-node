@@ -1,0 +1,73 @@
+# Systemd 服务配置文件
+# 文件位置: /etc/systemd/system/sub-store-node.service
+
+[Unit]
+Description=Sub-Store Node Conversion Service
+Documentation=https://github.com/sirius-fan/Sub-Store-node
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME  # 替换为实际的用户名
+Group=YOUR_GROUP    # 替换为实际的组名
+WorkingDirectory=/path/to/Sub-Store-node  # 替换为实际的项目路径
+
+# 环境变量
+Environment=NODE_ENV=production
+Environment=PORT=3000
+
+# 启动命令
+ExecStart=/usr/bin/node /path/to/Sub-Store-node/server.js  # 替换为实际路径
+
+# 重启策略
+Restart=always
+RestartSec=10
+StartLimitInterval=60
+StartLimitBurst=3
+
+# 资源限制
+LimitNOFILE=65536
+
+# 日志配置
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=sub-store-node
+
+[Install]
+WantedBy=multi-user.target
+
+# ===========================================
+# 安装和使用说明：
+# ===========================================
+# 
+# 1. 编辑此文件，替换以下内容：
+#    - YOUR_USERNAME: 你的用户名（如：ubuntu, www-data）
+#    - YOUR_GROUP: 你的组名（通常与用户名相同）
+#    - /path/to/Sub-Store-node: 项目的实际路径
+# 
+# 2. 复制文件到 systemd 目录：
+#    sudo cp sub-store-node.service /etc/systemd/system/
+# 
+# 3. 重新加载 systemd 配置：
+#    sudo systemctl daemon-reload
+# 
+# 4. 启用开机自启：
+#    sudo systemctl enable sub-store-node
+# 
+# 5. 启动服务：
+#    sudo systemctl start sub-store-node
+# 
+# 6. 查看状态：
+#    sudo systemctl status sub-store-node
+# 
+# 7. 查看日志：
+#    sudo journalctl -u sub-store-node -f
+# 
+# 8. 停止服务：
+#    sudo systemctl stop sub-store-node
+# 
+# 9. 重启服务：
+#    sudo systemctl restart sub-store-node
+# 
+# 10. 禁用开机自启：
+#     sudo systemctl disable sub-store-node
