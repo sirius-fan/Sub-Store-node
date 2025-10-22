@@ -1,5 +1,11 @@
 # Sub-Store Node - 订阅转换服务
 
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
+[![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org)
+[![Deploy](https://img.shields.io/badge/deploy-Workers%20%7C%20Server-orange.svg)](#)
+
+> 🎉 现已支持 Cloudflare Workers 和服务器双模式部署！
+
 ## ✨ 特性概述
 
 - 🔄 多格式支持：Quantumult X、Surge、Clash、V2Ray 等主流代理客户端

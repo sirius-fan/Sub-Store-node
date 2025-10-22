@@ -11,6 +11,16 @@
 		"start": "node server.js",
 		"server": "node server.js",
 		"server:dev": "node --watch server.js",
+		"pm2:start": "pm2 start ecosystem.config.cjs",
+		"pm2:stop": "pm2 stop sub-store-node",
+		"pm2:restart": "pm2 restart sub-store-node",
+		"pm2:logs": "pm2 logs sub-store-node",
+		"pm2:monit": "pm2 monit",
+		"docker:build": "docker build -t sub-store-node .",
+		"docker:run": "docker run -d -p 3000:3000 --name sub-store-node sub-store-node",
+		"docker:stop": "docker stop sub-store-node && docker rm sub-store-node",
+		"docker:compose:up": "docker-compose up -d",
+		"docker:compose:down": "docker-compose down",
 		"lint": "prettier --write \"**/*.js\""
 	},
 	"dependencies": {
